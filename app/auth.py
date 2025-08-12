@@ -1,9 +1,10 @@
+import os
 import time
 from typing import Optional
 from fastapi import HTTPException, Header
 from jose import jwt
 
-SECRET = "cambia-esto-en-produccion"  # Demo ONLY
+SECRET = os.getenv("JWT_SECRET", "cambia-esto-en-produccion")  # Demo ONLY
 ALGO = "HS256"
 
 def create_token(username: str, exp_seconds: int = 3600) -> str:
